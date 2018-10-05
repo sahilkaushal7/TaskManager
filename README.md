@@ -1,3 +1,10 @@
+How it Works : 
+1. There are two options for the user. Where the user can add a task to the already defined categories or Add a new category.
+2. For adding to an already defined category the user needs to select the category first and insert the task.
+3. For adding to a new category a user has to add a new category then select it from the drop down and then can add a new task.
+4. After the adding the task in a category the user can delete or edit it. To delete the user just needs to click on the cross and to edit user needs to click on the edit button and there will be a prompt for the new value. The user can insert the new value and click OK and the value will be updated.
+5. After performing all the function a user can drag a particular task from a category and drop into a new one.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
