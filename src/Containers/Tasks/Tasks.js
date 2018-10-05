@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import './Tasks.css'
-import Task from '../Task/Task';
+import Task from '../../Components/Task/Task';
 import Auxi from '../../HOC/Auxi';
 
 class Tasks extends Component{
@@ -48,7 +48,7 @@ class Tasks extends Component{
     allowDrop = ev => {
         ev.preventDefault();
     }
-    childData = (a,b) => {
+    deleteData = (a,b) => {
         this.setState({editCategory: a, editTask : b });
         let listdescription = this.state.itemDescription;
         let l = this.state.item.length;
@@ -60,13 +60,30 @@ class Tasks extends Component{
             }
             }
     }
+    editData = (a,b,changed) => {
+        this.setState({editCategory: a, editTask : b });
+        let listdescription = this.state.itemDescription;
+        let l = this.state.item.length;
+        for(let i = 0 ; i < l ; i++){
+            if(this.state.item[i] === b)
+            {   
+                let index = listdescription[b].indexOf(a);
+                listdescription[b][index] = changed
+                console.log();
+            }
+            }
+    }
     render(){
-        console.log(this.state.editCategory,this.state.editTask);
         let task;
         let l = this.state.item.length; 
         for(let i = 0 ; i < l ; i++){
             let item = this.state.item[i];
-        task =<div id="div1" onDrop={this.drop} onDragOver={this.allowDrop}>{task}<Task name={this.state.item[i]} description={this.state.itemDescription[item]} action = {this.childData}></Task></div>
+        task =
+        <div id="div1" onDrop={this.drop} onDragOver={this.allowDrop}>
+        {task}
+        <Task name={this.state.item[i]} description={this.state.itemDescription[item]} delete = {this.deleteData} edit={this.editData}>
+        </Task>
+        </div>
         }
         let option = <option value="null">Select a Category</option>;
         for(let i = 0 ; i < l ; i++){
@@ -75,12 +92,12 @@ class Tasks extends Component{
             }
         return(
             <div>
-                <form onSubmit={this.submitQuery}>
+                <form onSubmit={this.submitQuery} className="formOne">
                 <select id="listvalue">{option}</select><br/>
                 <input type='text' placeholder='Create a task' id='listdescription'/><br/>
                 <input type='submit' value='Insert'/>    
                 </form>
-                <form onSubmit={this.submitList}>
+                <form onSubmit={this.submitList} className="formTwo">
                 <input type='text' placeholder='Add a new category' id='listname' /><br/>
                 <input type='submit' value='Add'/>    
                 </form>
