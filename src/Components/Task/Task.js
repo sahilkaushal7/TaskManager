@@ -12,7 +12,7 @@ let l='';
 const Task = (props) =>{
     let description;
     let editit = (a,b,c) => {
-        l = prompt('Changed Value');
+        l = prompt('Changed Value',b);
         props.edit(b,c,l);
     };
     for(let i = 0 ; i < props.description.length ; i++){ 
